@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+	.flex-container {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  width: 84%;
+	}
+	.flex-container > div {
+	  width: 50%;
+	  text-align: center;
+	  line-height: 100px;
+	  font-size: 30px;
+	}
+	.mob-first {
+      text-align: center;
+	  position: relative;
+	  float: right;
+	  margin-top: 20px;
+	  margin-right: 17px;
+	}
+
+	.shuffle,.sort {
+		width: 130px;
+		height: 50px;
+		background-color: #72C3DC;
+		font-size: 16px;
+		color: white;
+		margin-bottom: 10px;
+		border-radius: 10px;
+		border: 0;
+		display: block;
+		box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .card1{
+      background-color:#6F98A8;
+    }
+    .card2{
+      background-color:#2B8EAD;
+	}
+	.card3{
+	  background-color:#2F454E;
+	}
+	.card4{
+	  background-color:#2B8EAD;
+	}
+	.card5{
+	  background-color:#2F454E;
+	}
+	.card6{
+	  background-color:#EFEFEF;
+	}
+	.card7{
+	  background-color:#EFEFEF;
+	}
+	.card8{
+	  background-color:#333333;
+	}
+	.card9{
+	  background-color:#2F454E;
+	}
+
+	.container{
+	  width: 70%;
+	  margin: 0 auto;
+	  background-color:#EFEFEF;
+	}
+	@media only screen and (min-width: 375px) and (max-width: 767px) {
+		.flex-container {
+			display: block;
+			width: 100%;
+		}
+		.flex-container > div {
+		  width: 100%;
+		  margin: 5px;
+		  line-height: 70px;
+		  background: #EFEFEF;
+		}
+		#shuffle {
+			margin-top: 100px;
+		}
+		.shuffle,.sort {
+			margin: 2px;
+		}
+		.mob-first {
+			position: absolute;
+			top: 0;
+			left: 232px;
+			display: inline-flex;
+		}
+		.container{
+		  width: 100%;
+		  background-color: white;
+		}
+		.card1{
+			background: linear-gradient(to left, #EEE 98%, #6F98A8 90%) !important;
+		}
+		.card2{
+			background: linear-gradient(to left, #EEE 98%, #2B8EAD 90%) !important;
+		}
+		.card3{
+			background: linear-gradient(to left, #EEE 98%, #2F454E 90%) !important;
+		}
+		.card4{
+			background: linear-gradient(to left, #EEE 98%, #2B8EAD 90%) !important;
+		}
+		.card5{
+			background: linear-gradient(to left, #EEE 98%, #2F454E 90%) !important;
+		}
+		.card6{
+			background: linear-gradient(to left, #EEE 98%, #808080 90%) !important;
+		}
+		.card7{
+			background: linear-gradient(to left, #EEE 98%, #808080 90%) !important;
+		}
+		.card8{
+			background: linear-gradient(to left, #EEE 98%, #333333 90%) !important;
+		}
+		.card9{
+			background: linear-gradient(to left, #EEE 98%, #2F454E 90%) !important;
+		}
+	}
+  </style>
+</head>
+<body>
+  <div class="container">
+	<div class="mob-first">
+	  <button onclick="Shuffle()" class="shuffle">
+		Suffle
+	  </button>
+	  <button onclick="Sort()" class="sort">
+		Sort
+	  </button>
+	</div>
+	<div id="shuffle">
+		<div class="flex-container">
+		  <div class="card1">1</div>
+		  <div class="card2">2</div>
+		  <div class="card3">3</div>
+		</div>
+		<div class="flex-container">
+		  <div class="card4">4</div>
+		  <div class="card5">5</div>
+		  <div class="card6">6</div>
+		</div>
+		<div class="flex-container">
+		  <div class="card7">7</div>
+		  <div class="card8">8</div>
+		  <div class="card9">9</div>
+		</div>
+	  </div>
+  </div>
+  
+
+  <script>
+    function Shuffle() {
+      var parent = document.getElementById("shuffle");
+      var divs = parent.children;
+      for (var i = 0; i < divs.length; i++) {
+        parent.append(divs[Math.floor(Math.random() * divs.length)]);
+      }
+    }
+    function Sort() {
+      var parent = document.getElementById("shuffle");
+      var divs = parent.children;
+      var arr = [...divs];
+      arr.sort(function(a,b){
+         return parseInt(a.innerText) - parseInt(b.innerText)
+      })
+
+      for (var i = 0; i < arr.length; i++) {
+        parent.append(arr[i]);
+      }
+    }
+  </script>
+</body>
+
+</html>
